@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 18:11:14 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/07/23 22:27:31 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/07/24 09:26:52 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ bool	open_redirections_in_parent(t_cmd *cmd_node, t_data *data)
 	{
 		if (temp_outfile_fd != -1)
 			close(temp_outfile_fd);
+		return (false);
 	}
 	temp_outfile_fd = open_output_files_in_parent(cmd_node);
 	if (temp_outfile_fd == -1 && has_output_redir(cmd_node->redir))

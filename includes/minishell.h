@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lellanos <lellanos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 20:24:53 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/23 21:48:52 by lellanos         ###   ########.fr       */
+/*   Updated: 2025/07/24 09:45:24 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdio.h>
 # include "lexer.h"
 # include "libft.h"
 # include "parser.h"
@@ -26,12 +25,14 @@
 # include <signal.h>
 # include <stdbool.h>
 # include <stddef.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <unistd.h>
 # define HEREDOC_TMP_FILE ".minishell_heredoc_tmp"
+extern int						rl_done;
 
 # ifndef PATH_MAX
 #  define PATH_MAX 4096
@@ -74,6 +75,7 @@ void							free_arr(char **arr);
 char							*get_env_value(const char *name, t_env *env);
 
 // executor
+void							setup_heredoc_signals(void);
 int								input_builtin_parent(t_cmd *cmd);
 int								output_builtin_parent(t_cmd *cmd);
 char							*handle_empty_line(const char *line);
@@ -93,7 +95,7 @@ bool							handle_built_parent(t_data *data,
 									t_cmd *cmd_node);
 int								open_output_files_in_parent(t_cmd *cmd_node);
 bool							open_redirections_in_parent(t_cmd *cmd_node,
-									t_data *data);							
+									t_data *data);
 void							go_builtins(int save_stdin, int save_stdout,
 									t_data *data, t_cmd *cmd);
 bool							exec_builtin(t_data *data, t_cmd *cmd);
@@ -147,8 +149,7 @@ void							run_shell(t_data *data);
 // LENY BORRAR
 // void		print_token(t_cmd *cmd_list);
 void							print_cmd_list(t_cmd *token_list);
-void							print_lex_token_list(
-									t_lex_token *lex_token_lst);
+void							print_lex_token_list(t_lex_token *lex_token_lst);
 const char						*get_token_type_str(t_token_type type);
 void							print_copy_env(t_env *env_list);
 

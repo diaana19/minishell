@@ -6,7 +6,7 @@
 #    By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/14 17:33:22 by dirituay          #+#    #+#              #
-#    Updated: 2025/07/23 22:34:07 by dirituay         ###   ########.fr        #
+#    Updated: 2025/07/24 09:42:56 by dirituay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = \
 	src/utils/utils3.c \
 	src/utils/free.c \
 	src/signals/signals.c \
+	src/signals/heredoc_signals.c \
 	src/execution/exec_cmd1.c \
 	src/execution/exec_cmd2.c \
 	src/execution/exec_cmd3.c \

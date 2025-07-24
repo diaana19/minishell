@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:41:27 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/23 22:27:23 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/07/24 09:23:17 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,15 @@ static int	open_input_file(t_redir *redir, t_data *data)
 	int	fd;
 
 	if (redir->type == REDIR_HEREDOC)
+	{
+		printf("DEBUG: heredoc delimitador: '%s'\n", redir->filename);
 		fd = here_doc(data, redir->filename, redir->heredoc_expand);
+	}
 	else
 		fd = open(redir->filename, O_RDONLY);
 	if (fd == -1)
-		perror("minishell: open input file error");
+		//perror("minishell: open input file error");
+		return (-1);
 	return (fd);
 }
 
