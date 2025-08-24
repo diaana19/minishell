@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 08:24:04 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/24 09:53:39 by dirituay         ###   ########.fr       */
+/*   Created: 2025/08/22 19:50:24 by dirituay          #+#    #+#             */
+/*   Updated: 2025/08/24 19:42:45 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 static void	heredoc_signal_handler(int signum)
 {
-	(void)signum;
-	write(STDOUT_FILENO, "\n", 1); // Muy importante
-	g_signal_pid = -3;
-	rl_done = 1;
-	rl_replace_line("", 0);
+	if (signum == SIGINT)
+	{
+		rl_done = 1;
+		rl_replace_line("", 0);
+		rl_redisplay();
+		g_signal_pid = 1;
+	}
 }
 
 void	setup_heredoc_signals(void)
 {
-	struct sigaction sa_int;
-
-	sa_int.sa_handler = heredoc_signal_handler;
-	sigemptyset(&sa_int.sa_mask);
-	sa_int.sa_flags = 0;
-	sigaction(SIGINT, &sa_int, NULL);
+	signal(SIGINT, heredoc_signal_handler);
 	signal(SIGQUIT, SIG_IGN);
+}
+
+// Restaurar señales normales
+void	restore_default_signals(void)
+{
+	setup_signals();
 }

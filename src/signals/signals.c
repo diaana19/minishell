@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 21:11:46 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/24 08:27:30 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/07/23 22:31:43 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 volatile sig_atomic_t	g_signal_pid = 0;
 
-//se ejecuta en readline para ejecutar una funcion
 static int	signal_event(void)
 {
 	return (0);

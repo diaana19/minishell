@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_built1.c                                      :+:      :+:    :+:   */
+/*   redirections1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:41:27 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/24 09:23:17 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:36:31 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	get_output_flags(t_redir_type type)
 	return (flags);
 }
 
-// redireccion de salida
-static int	process_output_redir(t_redir *current_redir, int *final_fd)
+// redireccion de salida (hijo) de salida
+static int	output_redirection(t_redir *current_redir, int *final_fd)
 {
 	int	flags;
 	int	new_fd;
@@ -47,7 +47,7 @@ static int	process_output_redir(t_redir *current_redir, int *final_fd)
 }
 
 // abre archivos de salida para un comando > >>
-int	open_output_files_in_parent(t_cmd *cmd_node)
+int	handle_output_redirec(t_cmd *cmd_node)
 {
 	int		final_output_fd;
 	t_redir	*current_redir;
@@ -58,7 +58,7 @@ int	open_output_files_in_parent(t_cmd *cmd_node)
 	current_redir = cmd_node->redir;
 	while (current_redir)
 	{
-		if (process_output_redir(current_redir, &final_output_fd) == -1)
+		if (output_redirection(current_redir, &final_output_fd) == -1)
 			return (-1);
 		current_redir = current_redir->next;
 	}
@@ -66,49 +66,38 @@ int	open_output_files_in_parent(t_cmd *cmd_node)
 }
 
 // abre un solo archivo de entrada (normal o heredoc) < <<
-static int	open_input_file(t_redir *redir, t_data *data)
+static int	input_redirection(t_redir *redir, t_data *data)
 {
 	int	fd;
 
 	if (redir->type == REDIR_HEREDOC)
 	{
-		printf("DEBUG: heredoc delimitador: '%s'\n", redir->filename);
 		fd = here_doc(data, redir->filename, redir->heredoc_expand);
+		if (fd == -2)
+			return (-2);
 	}
 	else
 		fd = open(redir->filename, O_RDONLY);
 	if (fd == -1)
-		//perror("minishell: open input file error");
-		return (-1);
+		perror("minishell: open input file error");
 	return (fd);
 }
 
-// procesa TODAS las redirecciones de entrada de t_redir
-bool	process_input_redirs(t_cmd *cmd_node, t_data *data, int *temp_out_fd)
+//inicio de handle_input_redirec
+int	process_input_redirect(t_redir *redir, t_data *data, int *final_fd)
 {
-	t_redir	*current_redir;
-	int		temp_infile_fd;
+	int	redirect_result;
 
-	temp_infile_fd = -1;
-	current_redir = cmd_node->redir;
-	while (current_redir)
+	if (*final_fd != -1)
+		close(*final_fd);
+	redirect_result = input_redirection(redir, data);
+	if (redirect_result == -2)
+		return (-2);
+	*final_fd = redirect_result;
+	if (*final_fd == -1)
 	{
-		if (current_redir->type == REDIR_IN
-			|| current_redir->type == REDIR_HEREDOC)
-		{
-			if (temp_infile_fd != -1)
-				close(temp_infile_fd);
-			temp_infile_fd = open_input_file(current_redir, data);
-			if (temp_infile_fd == -1)
-			{
-				data->exit_code = 1;
-				if (*temp_out_fd != -1)
-					close(*temp_out_fd);
-				return (false);
-			}
-		}
-		current_redir = current_redir->next;
+		data->exit_code = 1;
+		return (-1);
 	}
-	cmd_node->infile_fd = temp_infile_fd;
-	return (true);
+	return (0);
 }

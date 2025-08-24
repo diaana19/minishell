@@ -6,13 +6,13 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 19:44:12 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/12 16:22:19 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:42:54 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-//intercambia 2 elementos en un char **tab
+// intercambia 2 elementos en un char **tab
 static void	swap_array(int i, int j, char **tab)
 {
 	char	*temp;
@@ -22,7 +22,7 @@ static void	swap_array(int i, int j, char **tab)
 	tab[j] = temp;
 }
 
-//ordena alfab. un **arr, muestra las env en orden(export)
+// ordena alfab. un **arr, muestra las env en orden(export)
 void	sort_array(char **arr, int length)
 {
 	int	i;
@@ -47,7 +47,7 @@ void	sort_array(char **arr, int length)
 	}
 }
 
-//busca una v. de entorno por su nombre y devuelve una copia de su valor
+// busca una v. de entorno por su nombre y devuelve una copia de su valor
 char	*get_env_value(const char *name, t_env *env)
 {
 	t_env	*current;
@@ -82,4 +82,20 @@ size_t	length_env_list(t_env *env_list)
 		temp = temp->next;
 	}
 	return (i);
+}
+
+// busca el valor de la variable de entorno PATH
+char	*get_path_value(t_env *env)
+{
+	while (env)
+	{
+		if (ft_strcmp(env->name, "PATH") == 0)
+		{
+			if (env->value && *env->value != '\0')
+				return (env->value);
+			return (NULL);
+		}
+		env = env->next;
+	}
+	return (NULL);
 }

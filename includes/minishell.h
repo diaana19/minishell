@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 20:24:53 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/24 09:45:24 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:49:19 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # define HEREDOC_TMP_FILE ".minishell_heredoc_tmp"
-extern int						rl_done;
 
 # ifndef PATH_MAX
 #  define PATH_MAX 4096
@@ -73,9 +72,28 @@ int								strlen1(const char *s);
 void							free_env_node(t_env *node);
 void							free_arr(char **arr);
 char							*get_env_value(const char *name, t_env *env);
+void							close_all_pipes_in_parent(t_data *data);
+void							close_parent_pipes(int prev_read_fd,
+									int *pipe_fds);
 
 // executor
-void							setup_heredoc_signals(void);
+bool							handle_pipe_error(t_data *data,
+									int prev_read_fd);
+void							setup_pipes_and_fork(t_data *data, t_cmd *cmd,
+									int *prev_read_fd, int *pipe_fds);
+int								process_input_redirect(t_redir *redir,
+									t_data *data, int *final_fd);
+bool							has_output_redir(t_redir *redir);
+bool							has_input_redir(t_redir *redir);
+void							close_inherited_pipes(int *pips_fds,
+									t_cmd *cmd_node);
+void							parent_process(t_cmd *cmd_node);
+char							*validate_and_get_path(t_data *data,
+									char *cmd_name);
+char							*join_path_and_cmd(const char *path,
+									const char *cmd);
+int								handle_all_redirections(t_cmd *cmd_node,
+									t_data *data, int *pipe_fds);
 int								input_builtin_parent(t_cmd *cmd);
 int								output_builtin_parent(t_cmd *cmd);
 char							*handle_empty_line(const char *line);
@@ -87,51 +105,29 @@ char							*handle_expansion(char *buffer, t_data *data,
 									bool expand_vars);
 char							*process_dollar_loop(char *result,
 									char *current_i, t_data *data);
-bool							exec_pipe_cmds(t_data *data, t_cmd *first_cmd,
-									int *temp_pipe_container, int cmd_count);
-bool							process_input_redirs(t_cmd *cmd_node,
-									t_data *data, int *temp_out_fd);
-bool							handle_built_parent(t_data *data,
-									t_cmd *cmd_node);
-int								open_output_files_in_parent(t_cmd *cmd_node);
-bool							open_redirections_in_parent(t_cmd *cmd_node,
+int								handle_input_redirec(t_cmd *cmd_node,
 									t_data *data);
+int								handle_output_redirec(t_cmd *cmd_node);
 void							go_builtins(int save_stdin, int save_stdout,
 									t_data *data, t_cmd *cmd);
-bool							exec_builtin(t_data *data, t_cmd *cmd);
-void							restore_std_fds(int sav_fd_stdin,
+bool							execution_builtins(t_data *data, t_cmd *cmd);
+void							restore_fds_parent(int sav_fd_stdin,
 									int sav_fd_stdout);
 bool							is_builtin(char *cmd);
-bool							exec_cmds(t_data *data, t_cmd *cmd_node,
-									int *pipe);
-void							wait_child(t_data *data);
+void							wait_child(t_data *data, int num_cmds);
 void							child_process(t_data *data, t_cmd *cmd,
-									int *pipefd);
+									int prev_read_fd, int *pipefd);
 bool							execution(t_data *data);
-bool							validate_cmd_path(char **cmd_path, t_data *data,
-									char *cmd_name);
-void							redirect_int_out(t_cmd *cmd_node,
-									int *pip_fds_parent);
 void							built_child(t_data *data, t_cmd *cmd_node,
 									int *pipe);
-void							handle_error_child(t_cmd *cmd_node);
-void							cmd_exce_child(t_data *data, t_cmd *cmd_node,
-									int *pip);
 int								count_cmds(t_cmd *head);
-char							*handle_path(t_data *data, char *cmd_name);
-int								ft_path_join(char *dest, const char *path,
-									const char *cmd, size_t dest_size);
-char							*check_and_dup(t_data *data, char *cmd_name);
-char							*find_cmd_path(t_data *data, char *cmd_name);
 char							*get_path_value(t_env *env);
 void							cmd_error(const char *cmd_name, int err_code);
-bool							check_path(const char *cmd_path,
-									const char *cmd_name, t_data *data);
 char							*replace_dollar(const char *line, t_data *data);
 int								here_doc(t_data *data, char *word_delimiter,
 									bool expand_vars);
 
-// ENVI
+// environment
 void							ft_copy_content(char *envp, t_env **env_list);
 void							ft_copy_env(char **envp, t_env **env_list);
 t_env							*new_env(char *name, char *value);
@@ -141,17 +137,10 @@ char							**env_list_to_array(t_env *env);
 void							free_env(t_env **env_list);
 char							*duplicated_str(t_env *node, char *str_copy,
 									bool is_name);
-// SIGNALS
+// signals
 void							setup_signals(void);
-
+void							setup_heredoc_signals(void);
+void							restore_default_signals(void);
 void							run_shell(t_data *data);
 
-// LENY BORRAR
-// void		print_token(t_cmd *cmd_list);
-void							print_cmd_list(t_cmd *token_list);
-void							print_lex_token_list(t_lex_token *lex_token_lst);
-const char						*get_token_type_str(t_token_type type);
-void							print_copy_env(t_env *env_list);
-
-void							close_all_pipes_in_parent(t_data *data);
 #endif

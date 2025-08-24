@@ -6,7 +6,7 @@
 #    By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/14 17:33:22 by dirituay          #+#    #+#              #
-#    Updated: 2025/07/24 09:42:56 by dirituay         ###   ########.fr        #
+#    Updated: 2025/08/23 21:25:28 by dirituay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,16 +29,13 @@ SRC = \
 	src/utils/free.c \
 	src/signals/signals.c \
 	src/signals/heredoc_signals.c \
-	src/execution/exec_cmd1.c \
-	src/execution/exec_cmd2.c \
-	src/execution/exec_cmd3.c \
-	src/execution/exec_cmd4.c \
-	src/execution/exec_cmd5.c \
-	src/execution/exec_built1.c \
-	src/execution/exec_built2.c \
-	src/execution/exec_built3.c \
-	src/execution/find_cmd1.c \
-	src/execution/find_cmd2.c \
+	src/execution/redirections1.c \
+	src/execution/redirections2.c \
+	src/execution/exec_pipes.c \
+	src/execution/execution.c \
+	src/execution/child_process.c \
+	src/execution/exec_builtins.c \
+	src/execution/find_cmd.c \
 	src/execution/here_doc1.c \
 	src/execution/here_doc2.c \
 	src/execution/here_doc3.c \
