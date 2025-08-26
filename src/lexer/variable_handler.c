@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variable_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leny <Leny@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:08:32 by lellanos          #+#    #+#             */
-/*   Updated: 2025/07/18 23:12:18 by Leny             ###   ########.fr       */
+/*   Updated: 2025/08/25 21:15:59 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ static char	*get_var_value(char *var, t_data data)
 		if (ft_strcmp(data.env->name, var) == 0)
 		{
 			free(value);
-			value = ft_strdup(data.env->value);
+			if (data.env->value == NULL)
+				value = ft_strdup("");
+			else
+				value = ft_strdup(data.env->value);
+			break ;
 		}
 		data.env = data.env->next;
 	}
@@ -51,8 +55,8 @@ static void	handle_env_var(t_parse_re *parse, char *input, t_data data)
 
 static t_parse_re	handle_dolar_special(char *input, t_parse_re parse)
 {
-	char		*dolar_sign;
-	char		*tmp;
+	char	*dolar_sign;
+	char	*tmp;
 
 	dolar_sign = ft_strdup("$");
 	if (!dolar_sign)

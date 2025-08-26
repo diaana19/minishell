@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 20:48:47 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/22 18:18:26 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/25 22:21:08 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	restore_fds_parent(int sav_fd_stdin, int sav_fd_stdout)
 	}
 }
 
-// ejecuta los builtins, identifica y llama al q corresponde
 void	go_builtins(int save_stdin, int save_stdout, t_data *data, t_cmd *cmd)
 {
 	if (!ft_strncmp("echo", cmd->argv[0], INT_MAX))
@@ -102,6 +101,8 @@ bool	execution_builtins(t_data *data, t_cmd *cmd_node)
 	int	sav_fd_stdin;
 	int	sav_fd_stdout;
 
+	if (!is_builtin(cmd_node->argv[0]))
+		return (false);
 	if (has_input_redir(cmd_node->redir))
 		cmd_node->infile_fd = handle_input_redirec(cmd_node, data);
 	if (has_output_redir(cmd_node->redir))

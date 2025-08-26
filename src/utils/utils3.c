@@ -6,13 +6,13 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:32:10 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/08/16 15:46:55 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/25 22:01:56 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-//free para un array de strings hasta un length especif.
+// free para un array de strings hasta un length especif.
 static void	free_len_arr(char **arr, int length)
 {
 	while (length > 0)
@@ -27,8 +27,8 @@ static char	*create_env_str(t_env *node)
 
 	if (node->value)
 	{
-		temp_str = (char *)malloc(ft_strlen(node->name)
-				+ ft_strlen(node->value) + 2);
+		temp_str = (char *)malloc(ft_strlen(node->name) + ft_strlen(node->value)
+				+ 2);
 		if (!temp_str)
 			return (NULL);
 		ft_strcpy(temp_str, node->name);

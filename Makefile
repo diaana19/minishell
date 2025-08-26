@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+         #
+#    By: lellanos <lellanos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/14 17:33:22 by dirituay          #+#    #+#              #
-#    Updated: 2025/08/23 21:25:28 by dirituay         ###   ########.fr        #
+#    Updated: 2025/08/26 10:34:02 by lellanos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ SRC = \
 OBJ := $(SRC:%.c=%.o)
 
 CC = cc
-CFLAGS = -g3 -Wall -Wextra -Werror -pthread -I./includes -I./libft
+CFLAGS = -Wall -Wextra -Werror -I./includes -I./libft
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a

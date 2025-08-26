@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:25:36 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/24 19:48:48 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/25 21:44:49 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // builtins q se ejecutan en el padre cuando no son pipe
 static bool	handle_built_parent(t_data *data, t_cmd *cmd_node)
 {
+	if (!is_builtin(cmd_node->argv[0]))
+		return (false);
 	if (!ft_strncmp("exit", cmd_node->argv[0], INT_MAX))
 	{
 		go_builtins(-1, -1, data, cmd_node);

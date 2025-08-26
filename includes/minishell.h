@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 20:24:53 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/24 19:49:19 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/25 22:01:02 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ char							*get_env_value(const char *name, t_env *env);
 void							close_all_pipes_in_parent(t_data *data);
 void							close_parent_pipes(int prev_read_fd,
 									int *pipe_fds);
+void							handle_exit_in_pipeline(t_data *data,
+									char **argv);
 
 // executor
 bool							handle_pipe_error(t_data *data,

@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 15:09:45 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/08/24 19:29:53 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/25 21:54:49 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,12 @@ char	*validate_and_get_path(t_data *data, char *cmd_name)
 		path_to_check = validate_absolute_path(cmd_name);
 		if (path_to_check)
 			return (path_to_check);
-		status_code = 126;
+		if (access(cmd_name, F_OK) != 0)
+			status_code = 127;
+		else if (access(cmd_name, X_OK) != 0)
+			status_code = 126;
+		else
+			status_code = 126;
 	}
 	else
 	{

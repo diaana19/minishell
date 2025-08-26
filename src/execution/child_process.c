@@ -6,7 +6,7 @@
 /*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 21:02:46 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/24 19:33:30 by dirituay         ###   ########.fr       */
+/*   Updated: 2025/08/25 21:50:50 by dirituay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	cmd_exce_child(t_data *data, t_cmd *cmd_node)
 	cmd_path = validate_and_get_path(data, cmd_node->argv[0]);
 	if (!cmd_path)
 	{
-		free_total(data, 0);
+		free_total(data, data->exit_code);
 		exit(data->exit_code);
 	}
 	env_arr = env_list_to_array(data->env);
