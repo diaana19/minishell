@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fill_redirections.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 16:59:09 by lellanos          #+#    #+#             */
-/*   Updated: 2025/07/18 20:26:02 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
 static t_lex_token	*fill_redirect_heredoc(t_lex_token *lex, t_cmd *cmd)

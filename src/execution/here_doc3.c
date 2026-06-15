@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   here_doc3.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 21:10:18 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/24 19:48:05 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// inicio de read_in_stdin
 static int	process_readline_input(char *buffer_readline, char *word_delimiter)
 {
 	if (g_signal_pid == 1)
@@ -28,7 +15,6 @@ static int	process_readline_input(char *buffer_readline, char *word_delimiter)
 	return (0);
 }
 
-//continuacion
 static void	write_expanded_buffer(char *buffer_readline, t_data *data, int fd,
 		bool expand_vars)
 {
@@ -39,7 +25,6 @@ static void	write_expanded_buffer(char *buffer_readline, t_data *data, int fd,
 	cleanup_buffers(buffer_readline, buffer_expansion);
 }
 
-//lee el heredoc
 static int	read_in_stdin(t_data *data, int fd, char *word_delimiter,
 		bool expand_vars)
 {
@@ -60,7 +45,6 @@ static int	read_in_stdin(t_data *data, int fd, char *word_delimiter,
 	return (0);
 }
 
-// inicio de here_doc
 static int	create_and_write_heredoc(t_data *data, char *word, bool expand_vars)
 {
 	int	fd;
@@ -83,7 +67,6 @@ static int	create_and_write_heredoc(t_data *data, char *word, bool expand_vars)
 	return (0);
 }
 
-// crea el archivo temporal y lee
 int	here_doc(t_data *data, char *word, bool expand_vars)
 {
 	int	fd;

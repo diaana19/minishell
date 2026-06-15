@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 20:24:53 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 22:01:02 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -39,7 +27,7 @@
 
 extern volatile sig_atomic_t	g_signal_pid;
 
-// builtins
+
 int								ft_pwd(char **av);
 int								ft_echo(char **args);
 int								ft_cd(t_data *data, char **params);
@@ -61,7 +49,6 @@ int								ft_export(char **str, t_env **env);
 int								ft_env(t_env *env, char **args);
 void							ft_exit(t_data *data, char **args);
 int								ft_unset(char **str, t_env **env);
-// utils
 void							sort_array(char **arr, int length);
 char							*ft_strndup(const char *s1, size_t n);
 char							*ft_strcpy(char *s1, const char *s2);
@@ -75,10 +62,6 @@ char							*get_env_value(const char *name, t_env *env);
 void							close_all_pipes_in_parent(t_data *data);
 void							close_parent_pipes(int prev_read_fd,
 									int *pipe_fds);
-void							handle_exit_in_pipeline(t_data *data,
-									char **argv);
-
-// executor
 bool							handle_pipe_error(t_data *data,
 									int prev_read_fd);
 void							setup_pipes_and_fork(t_data *data, t_cmd *cmd,
@@ -128,8 +111,6 @@ void							cmd_error(const char *cmd_name, int err_code);
 char							*replace_dollar(const char *line, t_data *data);
 int								here_doc(t_data *data, char *word_delimiter,
 									bool expand_vars);
-
-// environment
 void							ft_copy_content(char *envp, t_env **env_list);
 void							ft_copy_env(char **envp, t_env **env_list);
 t_env							*new_env(char *name, char *value);
@@ -139,7 +120,6 @@ char							**env_list_to_array(t_env *env);
 void							free_env(t_env **env_list);
 char							*duplicated_str(t_env *node, char *str_copy,
 									bool is_name);
-// signals
 void							setup_signals(void);
 void							setup_heredoc_signals(void);
 void							restore_default_signals(void);

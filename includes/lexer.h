@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lellanos <lellanos@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 09:30:50 by lellanos          #+#    #+#             */
-/*   Updated: 2025/07/17 19:20:00 by lellanos         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LEXER_H
 # define LEXER_H
 
@@ -22,7 +10,6 @@
 # define TAB '\t'
 # define REDIRECT_IN 60
 # define REDIRECT_OUT 62
-//# define EOF 0    (No se puede definir EOF, ya esta reservado para stdio.h)
 
 void		lexer(char *input, t_lex_token **lex_token_list, t_data data);
 t_lex_token	*new_lex_token(char *value, t_token_type type, int quotes);

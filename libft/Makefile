@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/16 14:32:52 by dirituay          #+#    #+#              #
-#    Updated: 2025/06/14 14:27:09 by dirituay         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 SRCS	=        \
 		 ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		 ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \

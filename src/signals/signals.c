@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 21:11:46 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:24:10 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
 volatile sig_atomic_t	g_signal_pid = 0;
@@ -19,7 +7,6 @@ static int	signal_event(void)
 	return (0);
 }
 
-// se activa cuando llega SIGINT o SIGQUIT
 static void	signal_handler(int signum)
 {
 	if (signum == SIGINT)
@@ -48,7 +35,6 @@ static void	signal_handler(int signum)
 	}
 }
 
-// configura las signals al inicio de la shell
 void	setup_signals(void)
 {
 	rl_event_hook = signal_event;

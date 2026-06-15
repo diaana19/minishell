@@ -1,18 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 13:52:29 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:24:38 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
-
-// verifica si el string es un -n valido(1) o no(0)
 
 static int	check_n(char *str)
 {
@@ -26,7 +12,6 @@ static int	check_n(char *str)
 	return (str[i] == '\0');
 }
 
-// verifica todos los -n e imprime el resto de args
 static void	write_echo(int count, int i, bool new_line, char *args[])
 {
 	while (args[i] && check_n(args[i]))
@@ -45,7 +30,6 @@ static void	write_echo(int count, int i, bool new_line, char *args[])
 		write(1, "\n", 1);
 }
 
-// cuenta los args y llama a write_echo
 int	ft_echo(char **args)
 {
 	int		count;

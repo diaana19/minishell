@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   redirections2.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 18:11:14 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/08/24 19:37:20 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// procesa TODAS las redirecciones de entrada de t_redir
 int	handle_input_redirec(t_cmd *cmd_node, t_data *data)
 {
 	t_redir	*current_redir;
@@ -36,7 +23,6 @@ int	handle_input_redirec(t_cmd *cmd_node, t_data *data)
 	return (final_infile_fd);
 }
 
-// verifica si hay alguna redireccion de salida
 bool	has_output_redir(t_redir *redir)
 {
 	while (redir)
@@ -48,7 +34,7 @@ bool	has_output_redir(t_redir *redir)
 	return (false);
 }
 
-// verifica si hay alguna redireccion de entrada
+
 bool	has_input_redir(t_redir *redir)
 {
 	while (redir)
@@ -85,7 +71,6 @@ static void	setup_stdin_stdout(t_cmd *cmd_node, int final_input_fd,
 	}
 }
 
-// procesa las redirecciones de salida y de entrada
 int	handle_all_redirections(t_cmd *cmd_node, t_data *data, int *pipe_fds)
 {
 	int	final_input_fd;

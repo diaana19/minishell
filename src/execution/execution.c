@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/12 16:25:36 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:44:49 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// builtins q se ejecutan en el padre cuando no son pipe
 static bool	handle_built_parent(t_data *data, t_cmd *cmd_node)
 {
 	if (!is_builtin(cmd_node->argv[0]))
@@ -31,7 +18,6 @@ static bool	handle_built_parent(t_data *data, t_cmd *cmd_node)
 		return (execution_builtins(data, cmd_node));
 }
 
-// errores pipes
 bool	handle_pipe_error(t_data *data, int prev_read_fd)
 {
 	data->exit_code = 1;
@@ -40,7 +26,6 @@ bool	handle_pipe_error(t_data *data, int prev_read_fd)
 	return (false);
 }
 
-// Ejecuta un solo comando dentro de un pipeline
 static bool	execute_single_command(t_data *data, t_cmd *cmd, int *prev_read_fd)
 {
 	int	pipe_fds[2];
@@ -62,7 +47,6 @@ static bool	execute_single_command(t_data *data, t_cmd *cmd, int *prev_read_fd)
 	return (true);
 }
 
-// crea los pipes y forkea, en un pipeline o en un solo cmd
 static bool	exec_pipe_commands(t_data *data, t_cmd *first_cmd)
 {
 	t_cmd	*current_cmd;
@@ -84,7 +68,6 @@ static bool	exec_pipe_commands(t_data *data, t_cmd *first_cmd)
 	return (true);
 }
 
-// inicia el pipeline llamando a exec_pipe_cmds
 bool	execution(t_data *data)
 {
 	return (exec_pipe_commands(data, data->cmds_list));

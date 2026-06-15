@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   find_cmd.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 15:09:45 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/08/25 21:54:49 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// une PATH y el nombre del comando
 char	*join_path_and_cmd(const char *path, const char *cmd)
 {
 	char	*joined_path;
@@ -31,7 +18,6 @@ char	*join_path_and_cmd(const char *path, const char *cmd)
 	return (joined_path);
 }
 
-// itera sobre cada direc de PATH y busca el comando
 static char	*search_in_path(t_data *data, char *cmd_name)
 {
 	char	**dirs;
@@ -61,7 +47,6 @@ static char	*search_in_path(t_data *data, char *cmd_name)
 	return (NULL);
 }
 
-// maneja errores
 void	cmd_error(const char *cmd_name, int err_code)
 {
 	ft_putstr_fd(STDERR_FILENO, "minishell: ");

@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 14:32:10 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/08/25 22:01:56 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// free para un array de strings hasta un length especif.
 static void	free_len_arr(char **arr, int length)
 {
 	while (length > 0)
@@ -20,7 +7,6 @@ static void	free_len_arr(char **arr, int length)
 	free(arr);
 }
 
-// crea la str NAME=VALUE o NAME y retorna el str creado
 static char	*create_env_str(t_env *node)
 {
 	char	*temp_str;
@@ -44,7 +30,6 @@ static char	*create_env_str(t_env *node)
 	return (temp_str);
 }
 
-// toma una t_env *env y la convierte a char **
 char	**env_list_to_array(t_env *env_list)
 {
 	char	**arr;

@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_pipes.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 14:05:07 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/08/24 19:27:40 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// verifica si es builtin(1) o no (0)
 bool	is_builtin(char *cmd)
 {
 	size_t		i;
@@ -39,7 +26,6 @@ void	close_parent_pipes(int prev_read_fd, int *pipe_fds)
 		close(pipe_fds[1]);
 }
 
-// cierra fds de file y fds de pipes
 void	parent_process(t_cmd *cmd_node)
 {
 	if (cmd_node->infile_fd != -1)
@@ -48,7 +34,6 @@ void	parent_process(t_cmd *cmd_node)
 		close(cmd_node->outfile_fd);
 }
 
-// cuenta cuantos cmds hay
 int	count_cmds(t_cmd *head)
 {
 	int		count;
@@ -64,7 +49,6 @@ int	count_cmds(t_cmd *head)
 	return (count);
 }
 
-// espera a sus hijos y agarra el exit code del ultimo cmd
 void	wait_child(t_data *data, int num_cmds)
 {
 	int		status;

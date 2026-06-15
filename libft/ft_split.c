@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 15:54:25 by dirituay          #+#    #+#             */
-/*   Updated: 2024/11/24 21:38:24 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 static char	**ft_malloc(char **str, int i)
@@ -99,21 +87,3 @@ char	**ft_split(char const *s, char c)
 	subs[words] = 0;
 	return (subs);
 }
-
-/*int	main(void)
-{
-	char	*str = "     hola   bola       cola        ";
-	char	deli = ' ';
-	char	**result;
-	int	i = 0;
-
-	result = ft_split(str, deli);
-	while (result[i] != NULL)
-	{
-		printf("subcadena: %d : %s\n", i + 1, result[i]);
-		free(result[i]);
-		i++;
-	}
-	free(result);
-	return (0);
-}*/

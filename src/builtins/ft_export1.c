@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_export1.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 13:52:51 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:35:43 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
-// verifica las variables validas en bash VAR=hola, no 1VAR
 bool	valid_id(char *str)
 {
 	int	i;
@@ -29,7 +16,6 @@ bool	valid_id(char *str)
 	return (true);
 }
 
-// convierte v. de entorno a array e imprime el env ordenado (sin args)
 bool	exp_no_args(t_env *env)
 {
 	int		i;
@@ -57,7 +43,6 @@ bool	exp_no_args(t_env *env)
 	return (true);
 }
 
-// verifica si alguna variable ya existe y retorna la posicion(j)
 int	key_exist(char *str, t_env *env)
 {
 	t_env	*temp;
@@ -81,7 +66,6 @@ int	key_exist(char *str, t_env *env)
 	return (-1);
 }
 
-// parsea key=value y divide name y value, key=value
 bool	extract_name_value(char *str, char **var_name, char **var_value)
 {
 	int	i;
@@ -105,7 +89,6 @@ bool	extract_name_value(char *str, char **var_name, char **var_value)
 	return (true);
 }
 
-// duplica y actu. name y value de t_env *node con new_name y new_value
 void	update_node(t_env *node, char *new_name, char *new_value)
 {
 	char	*temp_value;

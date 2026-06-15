@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lellanos <lellanos@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 15:05:30 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/17 16:58:51 by lellanos         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
@@ -40,7 +28,7 @@ typedef struct s_parse_result
 	t_token_type		type;
 }						t_parse_re;
 
-// Environment
+
 typedef struct s_env
 {
 	char				*name;
@@ -48,7 +36,7 @@ typedef struct s_env
 	struct s_env		*next;
 }						t_env;
 
-// builtins
+
 typedef struct s_list
 {
 	char				*str;
@@ -78,7 +66,7 @@ typedef struct s_redir
 	struct s_redir	*next;
 }	t_redir;
 
-// CMD
+
 typedef struct s_cmd
 {
 	char				**argv;

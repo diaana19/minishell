@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   redirections1.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 17:41:27 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/24 19:36:31 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// banderas de open
 static int	get_output_flags(t_redir_type type)
 {
 	int	flags;
@@ -25,7 +12,6 @@ static int	get_output_flags(t_redir_type type)
 	return (flags);
 }
 
-// redireccion de salida (hijo) de salida
 static int	output_redirection(t_redir *current_redir, int *final_fd)
 {
 	int	flags;
@@ -46,7 +32,6 @@ static int	output_redirection(t_redir *current_redir, int *final_fd)
 	return (0);
 }
 
-// abre archivos de salida para un comando > >>
 int	handle_output_redirec(t_cmd *cmd_node)
 {
 	int		final_output_fd;
@@ -65,7 +50,6 @@ int	handle_output_redirec(t_cmd *cmd_node)
 	return (final_output_fd);
 }
 
-// abre un solo archivo de entrada (normal o heredoc) < <<
 static int	input_redirection(t_redir *redir, t_data *data)
 {
 	int	fd;
@@ -83,7 +67,6 @@ static int	input_redirection(t_redir *redir, t_data *data)
 	return (fd);
 }
 
-//inicio de handle_input_redirec
 int	process_input_redirect(t_redir *redir, t_data *data, int *final_fd)
 {
 	int	redirect_result;

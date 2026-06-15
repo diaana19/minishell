@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   list_environment.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/22 16:46:10 by lellanos          #+#    #+#             */
-/*   Updated: 2025/07/14 17:52:47 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-//duplica la cadena y la asigna
 char	*duplicated_str(t_env *node, char *str_copy, bool is_name)
 {
 	char	*dupli_str;
@@ -30,7 +17,6 @@ char	*duplicated_str(t_env *node, char *str_copy, bool is_name)
 	return (dupli_str);
 }
 
-//crea los t_env nodos
 t_env	*new_env(char *name, char *value)
 {
 	t_env	*new;

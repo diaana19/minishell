@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_cd1.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/23 18:53:23 by lellanos          #+#    #+#             */
-/*   Updated: 2025/08/25 21:24:40 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
-//cuenta cuantos args hay en el array
 int	count_args(char **args)
 {
 	int	count;
@@ -23,7 +10,6 @@ int	count_args(char **args)
 	return (count);
 }
 
-//actualiza la v. de entorno oldpwd con el actual pwd
 static void	update_oldpwd(t_data *data)
 {
 	char	*old_value;
@@ -47,7 +33,6 @@ static void	update_oldpwd(t_data *data)
 	free(old_value);
 }
 
-//actualiza la v. de entorno de pwd con el direc actual
 void	update_pwd(t_data *data)
 {
 	char	buf[PATH_MAX];
@@ -69,7 +54,6 @@ void	update_pwd(t_data *data)
 	free(pwd);
 }
 
-//realiza chdir, muestra el nombre del pwd actual o cambia de pwd
 int	chdir_and_error(char *path)
 {
 	if (chdir(path) == -1)
@@ -80,7 +64,6 @@ int	chdir_and_error(char *path)
 	return (0);
 }
 
-//maneja el casa de cd y cd ~ a HOME
 int	handle_cd_home(t_data *data)
 {
 	char		*home_path;

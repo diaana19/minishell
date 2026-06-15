@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 13:53:01 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:24:54 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
-// elimina el head de la lista si coincide
 static bool	rmv_head(const char *rmv_name, t_env **head)
 {
 	t_env	*current;
@@ -29,7 +16,6 @@ static bool	rmv_head(const char *rmv_name, t_env **head)
 	return (false);
 }
 
-// elimina otro nodo(no head)
 static bool	rmv_no_head(const char *rmv_name, t_env *head)
 {
 	t_env	*current;
@@ -53,7 +39,6 @@ static bool	rmv_no_head(const char *rmv_name, t_env *head)
 	return (false);
 }
 
-//
 static void	rmv_env_node(const char *rmv_name, t_env **head)
 {
 	if (!head || !*head || !rmv_name)
@@ -63,7 +48,6 @@ static void	rmv_env_node(const char *rmv_name, t_env **head)
 	rmv_no_head(rmv_name, *head);
 }
 
-// elimina una varible de entorno(str) desde *env
 static bool	env_unset(char *str, t_env **env)
 {
 	if (!str || !(*str))
@@ -79,7 +63,6 @@ static bool	env_unset(char *str, t_env **env)
 	return (false);
 }
 
-// funcion principal
 int	ft_unset(char **str, t_env **env)
 {
 	int	i;

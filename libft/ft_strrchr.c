@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 12:28:01 by dirituay          #+#    #+#             */
-/*   Updated: 2024/11/24 22:16:28 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
@@ -31,14 +19,3 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *) &s[i]);
 	return (pc);
 }
-
-/*int	main(void)
-{
-	char	*s = "hola lola";
-	char	c = 'l';
-	char	*result = ft_strrchr(s, c);
-
-	printf("ocurrencia en: %s\n", result);
-	printf("posicion en : %ld", result - s);
-	return (0);
-}*/

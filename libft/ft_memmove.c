@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:27:57 by dirituay          #+#    #+#             */
-/*   Updated: 2024/11/23 17:34:18 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
@@ -38,15 +26,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*#include <string.h>
-int	main(void)
-{
-	char	buffer1[40] = "holitas";
-	char	buffer2[40] = "holitas";
-
-	ft_memmove(buffer1 + 2, buffer1, 9);
-	printf("%s\n", buffer1);
-	memmove(buffer2 + 2, buffer2, 9);
-	printf("%s", buffer2);
-	return (0);
-}*/

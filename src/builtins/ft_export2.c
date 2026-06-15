@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_export2.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 14:26:25 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:38:05 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
-// crea y asigna un nuevo a la lista de v. de entorno (env)
 bool	add_new_node(t_env **env, char *name, char *value)
 {
 	t_env	*new;
@@ -29,7 +16,6 @@ bool	add_new_node(t_env **env, char *name, char *value)
 	return (true);
 }
 
-// busca una coincidencia y actualiza o agrega name y value
 static bool	update_or_add(t_env **env, char *name, char *value)
 {
 	int		key;
@@ -48,7 +34,6 @@ static bool	update_or_add(t_env **env, char *name, char *value)
 		return (add_new_node(env, name, value));
 }
 
-// Maneja el caso especial de export sin valor y valida el identificador
 static bool	handle_export_validation(char *str, char **var_name,
 		char **var_value, t_env *env)
 {
@@ -76,7 +61,6 @@ static bool	handle_export_validation(char *str, char **var_name,
 	return (true);
 }
 
-// Agrega o modifica una variable en la lista de entorno (env)
 bool	env_export(char *str, t_env **env)
 {
 	char	*var_name;
@@ -100,7 +84,6 @@ bool	env_export(char *str, t_env **env)
 	return (true);
 }
 
-// funcion principal, maneja no args o si args
 int	ft_export(char **str, t_env **env)
 {
 	int	exit_code;

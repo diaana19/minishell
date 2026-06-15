@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dianarituay <dianarituay@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 22:03:08 by dianarituay       #+#    #+#             */
-/*   Updated: 2024/11/22 18:11:19 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 char	*ft_strdup(const char *s1)
@@ -29,15 +17,3 @@ char	*ft_strdup(const char *s1)
 	dest[i] = '\0';
 	return (dest);
 }
-
-/*int	main(void)
-{
-	char	*str;
-	char	*dest;
-
-	str = "holi";
-	dest = ft_strdup(str);
-	printf("%s", dest);
-	free(dest);
-	return (0);
-}*/

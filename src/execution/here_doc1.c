@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   here_doc1.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 11:38:52 by dianarituay       #+#    #+#             */
-/*   Updated: 2025/07/18 21:08:17 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// junta una parte de la cadena orig. a un result acumulado
 static char	*append_segment(char *current_result, const char *source, int len)
 {
 	char	*segment;
@@ -32,7 +19,6 @@ static char	*append_segment(char *current_result, const char *source, int len)
 	return (new_result);
 }
 
-// expande $ a partir de pos_in_line
 static char	*expand_one_var(char *dollar_pos, t_data *data, int *len_orig)
 {
 	t_parse_re	result_parser;

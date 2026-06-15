@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 13:53:14 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 22:32:41 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
-// de str a int, marca error si str no es valido o muy grande
 static int	ft_atoi2(char *str, int *error)
 {
 	int					i;
@@ -39,7 +26,6 @@ static int	ft_atoi2(char *str, int *error)
 	return ((int)((result * sign) % 256));
 }
 
-// maneja e imprime los errores
 static void	handle_exit_error(t_data *data, char *arg, bool is_num_err)
 {
 	if (is_num_err)
@@ -56,7 +42,6 @@ static void	handle_exit_error(t_data *data, char *arg, bool is_num_err)
 	}
 }
 
-// termina el programa con exit code
 void	ft_exit(t_data *data, char **args)
 {
 	int	code;

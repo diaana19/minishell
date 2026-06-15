@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   child_process.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 21:02:46 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 21:50:50 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// maneja builtins cuando se ejecutan en el hijo(pipes)
 void	built_child(t_data *data, t_cmd *cmd_node, int *pipe)
 {
 	(void)pipe;
@@ -29,7 +16,6 @@ void	close_inherited_pipes(int *pips_fds, t_cmd *cmd_node)
 		close(pips_fds[1]);
 }
 
-// ejecuta comandos externos
 void	cmd_exce_child(t_data *data, t_cmd *cmd_node)
 {
 	char	*cmd_path;
@@ -57,7 +43,6 @@ void	cmd_exce_child(t_data *data, t_cmd *cmd_node)
 	exit(127);
 }
 
-// dsp de q fork duplica el minishell, ejecuta el comando en el hijo
 void	child_process(t_data *data, t_cmd *cmd_node, int prev_read_fd,
 		int *pipe)
 {
@@ -80,7 +65,6 @@ void	child_process(t_data *data, t_cmd *cmd_node, int prev_read_fd,
 	exit(data->exit_code);
 }
 
-//inicio de execute_single_cmd
 void	setup_pipes_and_fork(t_data *data, t_cmd *cmd, int *prev_read_fd,
 		int *pipe_fds)
 {

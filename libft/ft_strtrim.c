@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 17:36:35 by dirituay          #+#    #+#             */
-/*   Updated: 2024/11/24 15:40:20 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 static size_t	trim_start(char const *s1, char const *set)
@@ -59,19 +47,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	new_s1[len] = '\0';
 	return (new_s1);
 }
-
-/*int	main(void)
-{	
-	char	*str = "bbbbbhoblabbbbb";
-	char	*set = "b";
-	char	*trim = ft_strtrim(str, set);
-
-	if (trim)
-	{
-		printf("recorte: %s\n", trim);
-		free(trim);
-	}
-	else
-		printf("error");
-	return (0);
-}*/

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 13:42:10 by dirituay          #+#    #+#             */
-/*   Updated: 2025/07/03 13:27:42 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
@@ -35,14 +23,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	str[i] = '\0';
 	return (str);
 }
-
-/*int	main(void)
-{
-	char	*result = ft_substr("HOLA, DIANA", 20, 4);
-	
-	if (!result)
-		return (1);
-	printf ("%s", result);
-	free(result);	
-	return (0);
-}*/

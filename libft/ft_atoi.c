@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 18:37:10 by dianarituay       #+#    #+#             */
-/*   Updated: 2024/11/14 14:47:59 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
 int	ft_atoi(const char *str)
@@ -40,13 +28,3 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * result);
 }
-
-//int	main(void)
-//{
-	//char	*str;
-
-	//str = "   12345gdjsbs";
-	//printf("%d\n", ft_atoi(str));
-	//printf("%d", atoi(str));
-	//return (0);
-//}

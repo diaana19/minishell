@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   exec_builtins.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dirituay <dirituay@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 20:48:47 by dirituay          #+#    #+#             */
-/*   Updated: 2025/08/25 22:21:08 by dirituay         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/minishell.h"
 
-// crea una copia de stdin
 int	input_builtin_parent(t_cmd *cmd_node)
 {
 	int	sav_fd_stdin;
@@ -33,7 +20,6 @@ int	input_builtin_parent(t_cmd *cmd_node)
 	return (sav_fd_stdin);
 }
 
-// crea una copia de stdout
 int	output_builtin_parent(t_cmd *cmd_node)
 {
 	int	sav_fd_stdout;
@@ -54,7 +40,6 @@ int	output_builtin_parent(t_cmd *cmd_node)
 	return (sav_fd_stdout);
 }
 
-// restaura los fds dsp de un builtin con redirecciones
 void	restore_fds_parent(int sav_fd_stdin, int sav_fd_stdout)
 {
 	if (sav_fd_stdin != -1)
@@ -95,7 +80,6 @@ void	go_builtins(int save_stdin, int save_stdout, t_data *data, t_cmd *cmd)
 	}
 }
 
-// ejecuta los builtins en el padre y restaura
 bool	execution_builtins(t_data *data, t_cmd *cmd_node)
 {
 	int	sav_fd_stdin;
